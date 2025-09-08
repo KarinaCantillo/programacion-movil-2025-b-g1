@@ -52,9 +52,11 @@ El documento sirve para:
 
 RecetasColombianas es una **app móvil nativa** para Android, que interactúa con un backend mediante **API REST**.
 
-* **Frontend**:Kotlin/Jetpack Compose (Android nativo)
-* **Backend**: Node.js/Express o Firebase Functions.
-* **Base de datos**: Firebase Firestore para almacenamiento remoto con sincronización offline, o SQLite/Room para almacenamiento local de favoritos.
+* Frontend: React + Ionic React
+
+* Backend: Node.js  (TypeScript)
+
+* Base de datos: MySQL. 
 
 ### 2.2 Funciones del producto**
 
