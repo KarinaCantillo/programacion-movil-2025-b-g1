@@ -1,3 +1,11 @@
+# Historias de usuario
+**Fecha:** 2025-09-07  
+**Versión:** 1.1  
+**Responsables:**  
+ANGIE VALENTINA FLOREZ VARGAS  
+SERGIO ALEJANDRO MUÑOZ CABRERA  
+KARINA CANTILLO PLAZA
+
 ## HU-01 Registro de usuario
 
 | Requisito                  | Historia | Caso de Uso | Criterios de aceptación                                                                                               | Tipo de prueba (TC)                                                         | Prioridad (MoSCoW) | Estado    |

@@ -1,4 +1,10 @@
 ## Casos de Uso
+**Fecha:** 2025-09-07  
+**Versión:** 1.1  
+**Responsables:**  
+ANGIE VALENTINA FLOREZ VARGAS  
+SERGIO ALEJANDRO MUÑOZ CABRERA  
+KARINA CANTILLO PLAZA
 
 A continuación, se detallan los casos de uso del sistema, describiendo las interacciones entre los actores y la aplicación.
 

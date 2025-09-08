@@ -1,4 +1,10 @@
 # Software Requirements Specification (SRS) – App de Recetas “RecetasColombianas”
+**Fecha:** 2025-09-07  
+**Versión:** 1.1  
+**Responsables:**  
+ANGIE VALENTINA FLOREZ VARGAS  
+SERGIO ALEJANDRO MUÑOZ CABRERA  
+KARINA CANTILLO PLAZA
 
 ## 1. Introducción
 
