@@ -122,9 +122,9 @@ Feature: Consultar detalle de la tarifa
     Given que existe una tarifa configurada
     When el usuario selecciona "Ver detalle de tarifa"
     Then se muestra un modal con:
-      | Fórmula        | Monto = Tarifa x Tiempo |
-      | Tarifa vigente | $200 COP / min          |
-      | Ejemplo        | 30 min → $6.000         |
+      Fórmula = Monto = Tarifa x Tiempo |
+      Tarifa vigente = $5000 COP / Horas          |
+      Ejemplo  = 6 horas → $30.000         |
 
   Scenario: Tarifa no configurada
     Given que no existe tarifa configurada
