@@ -239,7 +239,7 @@ Esto garantiza que los **requerimientos funcionales (RF)** y **no funcionales (R
 * **RF asociado:** RF-08
 * **Prioridad:** Must Have
 * **Criterios de aceptación:** La calificación se refleja en ≤ 1 segundo.
-![alt text](UC-06.png)
+![alt text](UC-06.png) 
 ---
 
 ### **UC-07: Ver detalle de receta**
@@ -255,7 +255,7 @@ Esto garantiza que los **requerimientos funcionales (RF)** y **no funcionales (R
 * **Prioridad:** Must Have
 * **Criterios de aceptación:** El detalle se carga en ≤ 1 segundo.
 
-![alt text](UC-07.png)
+![alt text](UC-07.png) 
 ---
 
 ### **UC-08: Eliminar receta**
@@ -276,7 +276,7 @@ Esto garantiza que los **requerimientos funcionales (RF)** y **no funcionales (R
 * **RF asociado:** RF-10 (Eliminar receta)
 * **Prioridad:** Should Have
 * **Criterios de aceptación:** La eliminación se refleja en ≤ 1 segundo y la receta ya no es accesible desde ninguna vista.
-![alt text](UC-08.png)
+![alt text](UC-08.png) 
 
 ### PRIORIZACION MOSCOW
 
