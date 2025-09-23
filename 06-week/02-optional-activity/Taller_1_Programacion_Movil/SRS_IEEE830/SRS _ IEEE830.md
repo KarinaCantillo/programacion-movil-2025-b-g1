@@ -67,7 +67,7 @@ RecetasColombianas es una **app móvil nativa** para Android, que interactúa co
 ### 2.2 Funciones del producto**
 
 1. Registro y autenticación de usuarios.
-2. Crear, editar y eliminar recetas.
+2. Crear y eliminar recetas.
 3. Explorar y buscar recetas por título, ingredientes, categoría o tags.
 4. Guardar recetas favoritas offline.
 5. Comentar y valorar recetas.
