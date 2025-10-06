@@ -8,7 +8,7 @@ exports.createUser = async (req, res) => {
     const { nombre, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const usuario = await prisma.usuario.create({
+    const usuario = await prisma.user.create({
       data: { nombre, email, password: hashedPassword }
     });
 
@@ -17,59 +17,123 @@ exports.createUser = async (req, res) => {
       nombre: usuario.nombre, 
       email: usuario.email 
     });
+
   } catch (error) {
+    console.error("Error al crear usuario:", error);
     res.status(500).json({ error: error.message });
   }
 };
 
 // Listar usuarios
 exports.getUsers = async (req, res) => {
-  const usuarios = await prisma.usuario.findMany();
-  res.json(usuarios);
+  try {
+    const usuarios = await prisma.User.findMany();
+    res.json(usuarios);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
 // Obtener usuario por ID
+// Obtener usuario por ID
 exports.getUserById = async (req, res) => {
-  const { id } = req.params;
-  const usuario = await prisma.usuario.findUnique({ where: { id } });
-  usuario ? res.json(usuario) : res.status(404).json({ message: "Usuario no encontrado" });
+  try {
+    const { id } = req.params;
+
+    const usuario = await prisma.User.findUnique({
+      where: { id },
+    });
+
+    if (!usuario) {
+      return res.status(404).json({ message: "Usuario no encontrado" });
+    }
+
+    res.json(usuario);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
 // Actualizar usuario
 exports.updateUser = async (req, res) => {
   const { id } = req.params;
-  const { nombre, email } = req.body;
+  const { nombre, email, password } = req.body;
+
   try {
-    const usuario = await prisma.usuario.update({
+    // Verificamos si existe el usuario antes de actualizarlo
+    const existeUsuario = await prisma.User.findUnique({
       where: { id },
-      data: { nombre, email }
     });
-    res.json(usuario);
-  } catch {
-    res.status(404).json({ message: "Usuario no encontrado" });
+
+    if (!existeUsuario) {
+      return res.status(404).json({ message: "Usuario no encontrado" });
+    }
+
+    // Si envía nueva contraseña, la encriptamos
+    let dataToUpdate = { nombre, email };
+    if (password) {
+      const bcrypt = require("bcryptjs");
+      const hashedPassword = await bcrypt.hash(password, 10);
+      dataToUpdate.password = hashedPassword;
+    }
+
+    const usuarioActualizado = await prisma.User.update({
+      where: { id },
+      data: dataToUpdate,
+    });
+
+    res.json({
+      message: "Usuario actualizado correctamente",
+      usuario: usuarioActualizado,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };
+
 
 // Eliminar usuario
 exports.deleteUser = async (req, res) => {
   const { id } = req.params;
+
   try {
-    await prisma.usuario.delete({ where: { id } });
-    res.json({ message: "Usuario eliminado" });
-  } catch {
-    res.status(404).json({ message: "Usuario no encontrado" });
+    const usuario = await prisma.User.findUnique({ where: { id } });
+
+    if (!usuario) {
+      return res.status(404).json({ message: "Usuario no encontrado" });
+    }
+
+    await prisma.User.delete({ where: { id } });
+
+    res.json({ message: "Usuario eliminado correctamente" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };
 
+
 // Login
 exports.login = async (req, res) => {
-  const { email, password } = req.body;
-  const usuario = await prisma.usuario.findUnique({ where: { email } });
+  try {
+    const { email, password } = req.body;
 
-  if (usuario && (await bcrypt.compare(password, usuario.password))) {
+    const usuario = await prisma.User.findUnique({
+      where: { email },
+    });
+
+    if (!usuario) {
+      return res.status(404).json({ message: "Usuario no encontrado" });
+    }
+
+    const passwordValida = await bcrypt.compare(password, usuario.password);
+
+    if (!passwordValida) {
+      return res.status(401).json({ message: "Contraseña incorrecta" });
+    }
+
     const token = generateToken(usuario.id);
-    res.json({ token });
-  } else {
-    res.status(401).json({ message: "Credenciales inválidas" });
+    res.json({ message: "Inicio de sesión exitoso", token });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };

@@ -10,7 +10,7 @@ const options = {
       description: "API REST para la gestión de usuarios con Express, Prisma y JWT",
     },
     servers: [
-      { url: "http://localhost:3000/api" }
+        { url: "http://localhost:3001/api" },
     ],
     components: {
       securitySchemes: {
