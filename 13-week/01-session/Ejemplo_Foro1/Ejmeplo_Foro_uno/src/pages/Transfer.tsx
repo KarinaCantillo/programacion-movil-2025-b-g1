@@ -1,4 +1,3 @@
-// Transfer.tsx
 import React, { useState } from 'react';
 import {
   IonPage,
