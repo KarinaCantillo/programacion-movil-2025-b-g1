@@ -1,0 +1,7 @@
+{
+  "name": "Ejmeplo_Foro_uno",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
