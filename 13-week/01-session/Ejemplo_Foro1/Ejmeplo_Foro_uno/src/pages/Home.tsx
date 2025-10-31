@@ -1,54 +1,50 @@
-import React, { useState } from 'react';
+// Home.tsx
+import React from 'react';
 import {
   IonPage,
   IonHeader,
   IonToolbar,
   IonTitle,
   IonContent,
-  IonText,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
   IonButton,
-  IonAlert,
+  IonText,
 } from '@ionic/react';
-import './Home.css';
+import { useHistory } from 'react-router-dom';
 
 const Home: React.FC = () => {
-  const [showAlert, setShowAlert] = useState(false);
+  const history = useHistory();
 
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
-          <IonTitle>Bienvenido a MiApp</IonTitle>
+        <IonToolbar color="primary">
+          <IonTitle>MiBanco</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent className="ion-padding ion-text-center">
         <IonText color="dark">
-          <h2>Diseñada para una experiencia simple y accesible</h2>
+          <h2>Bienvenido, Karina</h2>
+          <p>Tu saldo disponible:</p>
         </IonText>
 
-        <IonButton
-          expand="block"
-          color="primary"
-          className="ion-margin-top"
-          onClick={() => setShowAlert(true)}
-          aria-label="Botón de acción principal"
-          aria-description="Presiona para realizar una acción"
-        >
-          Presionar
-        </IonButton>
+        <IonCard>
+          <IonCardHeader>
+            <IonCardTitle>$2.450.000</IonCardTitle>
+          </IonCardHeader>
+          <IonCardContent>Saldo actualizado al día de hoy.</IonCardContent>
+        </IonCard>
 
-        <IonAlert
-          isOpen={showAlert}
-          onDidDismiss={() => setShowAlert(false)}
-          header="✅ Acción realizada"
-          message="Gracias por interactuar con la app"
-          buttons={['OK']}
-        />
+        <IonButton expand="block" color="success" onClick={() => history.push('/transfer')}>
+          Realizar transferencia
+        </IonButton>
       </IonContent>
     </IonPage>
   );
 };
 
 export default Home;
-
